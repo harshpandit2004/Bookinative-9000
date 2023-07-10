@@ -22,16 +22,17 @@ The Bookinative-9000 React Native Client would offer the following features:
 
 ## Features Implemented
 
+- Ooga Booga Caveman Algorithm that would do the primary heavy lifting
 - Browsable UI for Home.js and AddBooks.js
 - API connection established
 - Conditional rendering of different screens
 - GET API call
 - POST API call
 - Static common background
+- Tabular UI for Browse.js
 
 ## Features yet to be implemented
 
-- Tabular UI for Browse.js
 - ML algorithm that would provide recommendations
 - UPDATE API calls
 - Animated (.gif) background

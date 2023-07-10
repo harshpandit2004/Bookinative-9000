@@ -31,7 +31,10 @@ export default function App() {
   };
 
   const recommendationHandler = () => {
-    setRenderer(<Recommendation backhandler={backhandler} data={data} />);
+    const arraylength = data.length;
+    const rando = Math.floor(Math.random() * arraylength);
+    const book = data[rando];
+    setRenderer(<Recommendation backhandler={backhandler} book={book} />);
   };
 
   const AddHandler = () => {
