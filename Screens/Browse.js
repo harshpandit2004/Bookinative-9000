@@ -4,8 +4,7 @@ import Button from '../Utils/Button'
 
 export default function Browse(props) {
   console.log(props.data[0])
-  const dataval1 = props.data[0];
-  const dataval = dataval1.author;
+  const dataval = props.data[15].author;
   return (
     <View>
       <Text>{dataval}</Text>

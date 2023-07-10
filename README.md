@@ -64,7 +64,7 @@ To set up the Bookinative-9000 React Native Client on your local machine, please
 6. Start the application by running the following command:
 
    ```
-   npm start
+   expo start
    ```
 
 7. Use the appropriate emulator or connect a physical device to view and interact with the Bookinative-9000 React Native Client.

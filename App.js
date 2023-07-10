@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import Home from "./Screens/Home";
 import Recommendation from "./Screens/Recommendation";
@@ -8,8 +8,17 @@ import Browse from "./Screens/Browse";
 
 export default function App() {
   const [temp, setTemp] = useState(true);
-  const [data, setData] = useState([]);
-  const [renderer, setRenderer] = useState();
+  const [data, setData] = useState("DATA");
+  const [renderer, setRenderer] = useState(null);
+
+  useEffect(() => {
+    fetch("https://bookinator-9000.cyclic.app/getbooklist").then((response) => {
+      response.json().then((data) => {
+        console.log(data[0]);
+        setData(data);
+      });
+    });
+  }, [temp]);
 
   const backhandler = () => {
     setRenderer(
@@ -21,14 +30,19 @@ export default function App() {
     );
   };
 
-  useEffect(() => {
-    fetch("https://bookinator-9000.cyclic.app/getbooklist").then((response) => {
-      response.json().then((data) => {
-        setData(data);
-        console.log(data[1]);
-      });
-    });
+  const recommendationHandler = () => {
+    setRenderer(<Recommendation backhandler={backhandler} data={data} />);
+  };
 
+  const AddHandler = () => {
+    setRenderer(<AddBooks backhandler={backhandler} data={data} />);
+  };
+
+  const BrowseHandler = () => {
+    setRenderer(<Browse backhandler={backhandler} data={data} />);
+  };
+
+  useEffect(() => {
     setRenderer(
       <Home
         recommendationHandler={recommendationHandler}
@@ -36,26 +50,7 @@ export default function App() {
         BrowseHandler={BrowseHandler}
       />
     );
-  }, [temp]);
-
-  const recommendationHandler = () => {
-    setTemp(!temp);
-    setTimeout(() => {
-      setRenderer(<Recommendation backhandler={backhandler} data={data} />);
-    }, 1000);
-  };
-  const AddHandler = () => {
-    setTemp(!temp);
-    setTimeout(() => {
-      setRenderer(<AddBooks backhandler={backhandler} data={data} />);
-    }, 1000);
-  };
-  const BrowseHandler = () => {
-    setTemp(!temp);
-    setTimeout(() => {
-      setRenderer(<Browse backhandler={backhandler} data={data} />);
-    }, 1000);
-  };
+  }, [data]);
 
   return <View style={styles.container}>{renderer}</View>;
 }
