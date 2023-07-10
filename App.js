@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ImageBackground } from "react-native";
 
 import Home from "./Screens/Home";
 import Recommendation from "./Screens/Recommendation";
@@ -52,14 +52,27 @@ export default function App() {
     );
   }, [data]);
 
-  return <View style={styles.container}>{renderer}</View>;
+  return (
+    <ImageBackground
+      source={require("./assets/background.png")}
+      style={styles.image}
+    >
+      <View style={styles.container}>{renderer}</View>
+    </ImageBackground>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "rgba(0,0,0, 0.01)",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    width: "100%",
   },
 });

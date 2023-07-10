@@ -8,9 +8,7 @@ export default function Buttons(props) {
       <Button pressHandler={props.recommendationHandler}>
         Recommend me a Book
       </Button>
-      <Button pressHandler={props.AddHandler}>
-        Add Book To the Library
-      </Button>
+      <Button pressHandler={props.AddHandler}>Add Book To the Library</Button>
       <Button pressHandler={props.BrowseHandler}>Browse Library</Button>
     </>
   );

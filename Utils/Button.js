@@ -5,7 +5,11 @@ import Colors from "./Colors";
 export default function Button(props) {
   return (
     <View style={styles.outerContainer}>
-      <Pressable style={styles.buttonDiv} android_ripple={{ color: "#c99eff" }} onPress={props.pressHandler}>
+      <Pressable
+        style={styles.buttonDiv}
+        android_ripple={{ color: "#c99eff" }}
+        onPress={props.pressHandler}
+      >
         <Text style={styles.buttonText}>{props.children}</Text>
       </Pressable>
     </View>

@@ -1,10 +1,9 @@
-import React,{useState} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import CustomTextbox from "../Components/Textbox";
 import Button from "../Utils/Button";
 
 export default function AddBooks(props) {
-
   const [bookName, setBookName] = useState("");
   const [bookGenre, setBookGenre] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -14,7 +13,14 @@ export default function AddBooks(props) {
 
   const handleSubmit = () => {
     console.log("Submitted");
-    console.log(bookName, bookGenre, authorName, coverImage, pirateLink, bookDescription);
+    console.log(
+      bookName,
+      bookGenre,
+      authorName,
+      coverImage,
+      pirateLink,
+      bookDescription
+    );
 
     //adding shit to the bill list
     fetch("https://dead-tan-beaver-robe.cyclic.app/addbook", {
@@ -24,12 +30,12 @@ export default function AddBooks(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        genre:bookGenre,
-        name:bookName,
-        author:authorName,
-        coverimg:coverImage,
-        pirate_link:pirateLink,
-        summary:bookDescription,
+        genre: bookGenre,
+        name: bookName,
+        author: authorName,
+        coverimg: coverImage,
+        pirate_link: pirateLink,
+        summary: bookDescription,
       }),
     })
       .then((res) => res.json())
@@ -47,19 +53,43 @@ export default function AddBooks(props) {
 
   return (
     <View style={styles.container}>
-    <View style={styles.formContainer}>
-      <Text style={styles.heading}>Add Books</Text>
-      <CustomTextbox onChangeText={setBookName} value={bookName} placeholder="Book Name" />
-      <CustomTextbox onChangeText={setBookGenre} value={bookGenre} placeholder="Book Genre" />
-      <CustomTextbox onChangeText={setAuthorName} value={authorName} placeholder="Author Name" />
-      <CustomTextbox onChangeText={setCoverImage} value={coverImage} placeholder="Cover Image URL" />
-      <CustomTextbox onChangeText={setPirateLink} value={pirateLink} placeholder="Pirate Link" />
-      <CustomTextbox onChangeText={setBookDescription} value={bookDescription} placeholder="Book Description" />
-      <Button pressHandler={handleSubmit}>Submit</Button>
+      <View style={styles.formContainer}>
+        <Text style={styles.heading}>Add Books</Text>
+        <CustomTextbox
+          onChangeText={setBookName}
+          value={bookName}
+          placeholder="Book Name"
+        />
+        <CustomTextbox
+          onChangeText={setBookGenre}
+          value={bookGenre}
+          placeholder="Book Genre"
+        />
+        <CustomTextbox
+          onChangeText={setAuthorName}
+          value={authorName}
+          placeholder="Author Name"
+        />
+        <CustomTextbox
+          onChangeText={setCoverImage}
+          value={coverImage}
+          placeholder="Cover Image URL"
+        />
+        <CustomTextbox
+          onChangeText={setPirateLink}
+          value={pirateLink}
+          placeholder="Pirate Link"
+        />
+        <CustomTextbox
+          onChangeText={setBookDescription}
+          value={bookDescription}
+          placeholder="Book Description"
+        />
+        <Button pressHandler={handleSubmit}>Submit</Button>
+      </View>
+      <Button pressHandler={props.backhandler}>Back</Button>
     </View>
-    <Button pressHandler={props.backhandler}>Back</Button>
-  </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

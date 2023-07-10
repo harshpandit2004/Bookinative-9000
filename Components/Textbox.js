@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, TextInput } from "react-native";
 
-export default function CustomTextbox(props){
+export default function CustomTextbox(props) {
   return (
     <TextInput
       style={styles.textbox}
@@ -10,7 +10,7 @@ export default function CustomTextbox(props){
       onChangeText={props.onChangeText}
     />
   );
-};
+}
 
 const styles = StyleSheet.create({
   textbox: {
@@ -21,9 +21,8 @@ const styles = StyleSheet.create({
     elevation: 10,
     paddingHorizontal: 10,
     marginVertical: 10,
-    textAlign:"center",
+    textAlign: "center",
     alignItems: "center",
     justifyContent: "center",
   },
-});   
-
+});
