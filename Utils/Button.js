@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
   buttonDiv: {
     backgroundColor: Colors.purple,
     fontFamily: "sans-serif",
-    padding: 15,
+    paddingVertical: 10,
+    paddingHorizontal: "15%",
     alignItems: "center",
   },
   buttonText: {
